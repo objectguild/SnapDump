@@ -16,6 +16,7 @@ BaselineOfSnapDump >> baseline: spec [
 		spec package: #'SnapDump-Server' with: [ spec requires: #('SnapDump-Core' 'ZincHTTPComponents' 'OpenAPI') ].
 		spec package: #'SnapDump-Server-Tests' with: [ spec requires: #('SnapDump-Server' 'Mocketry' ) ].
 		spec package: #'SnapDump-UI' with: [ spec requires: #('SnapDump-Client' ) ].
+		spec package: #'SnapDump-Web' with: [ spec requires: #('SnapDump-Client' 'Seaside3' 'TFLogin' 'MaterialDesignLite' ) ].
 
 		spec 
 			group: 'default' with: #( server 'handler' client ui tests);
@@ -23,6 +24,7 @@ BaselineOfSnapDump >> baseline: spec [
 			group: 'server' with: #( #'SnapDump-Server' 'Cinic');
 			group: 'client' with: #( #'SnapDump-Client' );
 			group: 'ui' with: #( #'SnapDump-UI' );
+			group: 'ui-web' with: #( #'SnapDump-Web' );
 			group: 'core' with: #(#'SnapDump-Core' );
 			group: 'tests' with: #('SnapDump-Core-Tests' 'SnapDump-Server-Tests').
 			
@@ -30,7 +32,10 @@ BaselineOfSnapDump >> baseline: spec [
 		self zinc: spec.
 		self cinic: spec.
 		self openApi: spec.
-		self neoJson: spec ]
+		self neoJson: spec.
+		self seaside: spec.
+		self tfLogin: spec.
+		self mdl: spec ]
 
 ]
 
@@ -38,6 +43,13 @@ BaselineOfSnapDump >> baseline: spec [
 BaselineOfSnapDump >> cinic: spec [
 	spec baseline: 'Cinic' with: [ 
 			spec repository: 'github://zweidenker/Cinic'. ]
+]
+
+{ #category : #baselines }
+BaselineOfSnapDump >> mdl: spec [
+	spec
+    	baseline: 'MaterialDesignLite'
+    	with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v2.2.1/src' ]
 ]
 
 { #category : #baselines }
@@ -59,6 +71,22 @@ BaselineOfSnapDump >> openApi: spec [
 			spec 
 				repository: 'github://zweidenker/OpenAPI:caf63fc0991bf1c22f7b7571e47897c86d33111d/source';
 				loads: #('REST') ]
+]
+
+{ #category : #baselines }
+BaselineOfSnapDump >> seaside: spec [
+	spec
+		baseline: 'Seaside3'
+		with:
+			[ spec repository: 'github://SeasideSt/Seaside:v3.3.4/repository' ]
+]
+
+{ #category : #baselines }
+BaselineOfSnapDump >> tfLogin: spec [
+	spec
+		baseline: 'TFLogin'
+		with:
+			[ spec repository: 'github://PierceNg/TF-Login:pharo7/src' ]
 ]
 
 { #category : #baselines }
