@@ -26,33 +26,52 @@ SDExplorer >> renderContentOn: html [
 		style: 'min-height: 400px;';
 		with: [ html mdlGrid
 				shadow: 2;
-				with: [ html mdlCell
+				with: [
+					 html mdlCell
 						size: 3;
-						style: 'border-right: thick solid #ff0000;';
-						with: [ html mdlList
+						style: 'border-right: thin solid grey;';
+						with: [ 
+							
+						
+							html mdlList
 								with: [ #('Project 1 ' 'Project 2')
-										do: [ :name | html mdlListItem: [ html mdlListPrimaryContent: name ] ] ]	"style: 'width: 300px';" ].
+										do: [ :name | html mdlListItem
+											
+											with: [
+												
+												html mdlListPrimaryContent:[ 
+													 html anchor
+											callback: [ ];
+											with: name  ] ] ] ] ].
 					html mdlCell
 						size: 3;
-						style: 'border-right: thick solid #ff0000;';
+						style: 'border-right: thin solid grey;';
 						with: [ 
 							html mdlList
 								with: [ #('Version 1' 'Version2')
-										do: [ :name | html mdlListItem: [ html mdlListPrimaryContent: name ] ] ]
-							 ].
+										do: [ :name | html mdlListItem: [ html anchor
+											callback: [ ];
+											with: name ] ]
+							 ]].
 					html mdlCell
 						size: 3;
-						style: 'border-right: thick solid #ff0000;';
+						style: 'border-right: thin solid grey;';
 						with: [ 
 							html mdlList
 								with: [ #('Exception 1' 'Exception 2')
-										do: [ :name | html mdlListItem: [ html mdlListPrimaryContent: name ] ] ]
+										do: [ :name | html mdlListItem: [ html mdlListPrimaryContent: [ 
+													 html anchor
+											callback: [ ];
+											with: name 
+													 ] ] ] ]
 							 ].
 					html mdlCell
 						size: 3;
 						with: [  
 							html mdlList
 								with: [ #('Snapshot 1 ' 'Snapshot 2')
-										do: [ :name | html mdlListItem: [ html mdlListPrimaryContent: name ] ] ]
-							] ] ]
+										do: [ :name | html mdlListItem: [ html mdlListPrimaryContent: [  html anchor
+											callback: [ ];
+											with: name ] ] ] ] ]
+							] ] 
 ]
